@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.28516.95
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemLibrary", "ItemLibrary\ItemLibrary.csproj", "{4D1182A1-AE28-468A-857A-FF611348D42A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemFormatter", "ItemFormatter\ItemFormatter.csproj", "{EFAC690A-38DF-47E9-BAAE-D5CE422131FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4D1182A1-AE28-468A-857A-FF611348D42A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D1182A1-AE28-468A-857A-FF611348D42A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D1182A1-AE28-468A-857A-FF611348D42A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFAC690A-38DF-47E9-BAAE-D5CE422131FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFAC690A-38DF-47E9-BAAE-D5CE422131FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFAC690A-38DF-47E9-BAAE-D5CE422131FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFAC690A-38DF-47E9-BAAE-D5CE422131FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
