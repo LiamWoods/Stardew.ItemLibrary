@@ -1,31 +1,30 @@
 ﻿using ItemFormatter.Classes;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using Newtonsoft.Json;
 using ItemFormatter.Classes.JSON;
+using System.Reflection;
 
 namespace ItemFormatter
 {
     class Program
     {
-        const string steamObjectInfoPath = @"C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\Content\Data";
-        const string xnbCliPath = @"C:\Users\Liam\Desktop\xnbcli-windows\xnbcli";
-        const string inputFileName = "ObjectInformation.json";
-        const string outputFile = @"C:\Users\Liam\source\repos\Stardew.ItemLibrary\ItemLibrary\Items.cs";
+        const string _steamObjectInfoPath = @"C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\Content\Data";
+        const string _xnbCliPath = @"C:\Users\Liam\Desktop\xnbcli-windows\xnbcli";
+        const string _inputFileName = "ObjectInformation.json";
+        const string _outputFilePath = @"ItemLibrary\Items.cs";
+        const string _assemblyName = "Stardew.ItemLibrary";
 
         static void Main(string[] args)
-        {            
-            var unpacker = new XnbUnpacker(steamObjectInfoPath, xnbCliPath);
+        {
+            var unpacker = new XnbUnpacker(_steamObjectInfoPath, _xnbCliPath);
             if (!unpacker.Unpack())
             {
                 return;
             }
 
-            var unpackedDir = Path.Combine(xnbCliPath, "unpacked");
-            var objInfo = ObjectInformation.LoadFromFile(Path.Combine(unpackedDir, inputFileName));
+            var unpackedDir = Path.Combine(_xnbCliPath, "unpacked");
+            var objInfo = ObjectInformation.LoadFromFile(Path.Combine(unpackedDir, _inputFileName));
 
             var trimChars = new char[] { ' ', '"' };
 
@@ -50,7 +49,12 @@ namespace ItemFormatter
             }
 
             var fileTxt = Formatter.FormatOutputText(items);
-            File.WriteAllText(outputFile, fileTxt);
+
+            var assemblyLocation = Assembly.GetExecutingAssembly().Location;
+
+            var outputFilePath = Path.Combine(assemblyLocation.Substring(0, assemblyLocation.IndexOf(_assemblyName)), _assemblyName, _outputFilePath);
+
+            File.WriteAllText(outputFilePath, fileTxt);
         }
     }
 }
