@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,12 +10,40 @@ namespace ItemFormatter
 {
     class Program
     {
+        const string steamObjectInfoPath = @"C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\Content\Data";
+        const string objInfoFileName = "ObjectInformation.xnb";
+        const string xnbCliPath = @"C:\Users\Liam\Desktop\xnbcli-windows\xnbcli";
+        const string inputFileName = "ObjectInformation.json";
+        const string outputFile = @"C:\Users\Liam\source\repos\Stardew.ItemLibrary\ItemLibrary\Items.cs";
+
         static void Main(string[] args)
         {
-            var basePath = @"C:\Users\Liam\Desktop";
-            var inputFileName = "ObjectInformation.json";
-            var outputFileName = "stardewitemsformatted.txt";
-            var objInfo = GetObjectInformation(Path.Combine(basePath, inputFileName));
+            var outputPath = Path.Combine(xnbCliPath, "packed", objInfoFileName);
+            File.Delete(outputPath);
+            File.Copy(Path.Combine(steamObjectInfoPath, objInfoFileName), outputPath, true);
+
+            var packedDir = Path.Combine(xnbCliPath, "packed");
+            var unpackedDir = Path.Combine(xnbCliPath, "unpacked");
+
+            var xnbExe = Path.Combine(xnbCliPath, "xnbcli.exe");
+            var processInfo = new ProcessStartInfo(xnbExe);
+            processInfo.CreateNoWindow = true;
+            processInfo.UseShellExecute = false;
+            processInfo.Arguments = $@"unpack ""{packedDir}"" ""{unpackedDir}""";
+            processInfo.RedirectStandardError = true;
+            processInfo.RedirectStandardOutput = true;
+
+            var unpacker = Process.Start(processInfo);
+
+            unpacker.Start();
+            unpacker.WaitForExit();
+
+            string output = unpacker.StandardOutput.ReadToEnd();
+            string error = unpacker.StandardError.ReadToEnd();
+
+            unpacker.Close();
+
+            var objInfo = GetObjectInformation(Path.Combine(unpackedDir, inputFileName));
             var trimChars = new char[] { ' ', '"' };
 
             var items = new List<Item>();
@@ -29,23 +58,24 @@ namespace ItemFormatter
 
                 int unique = 2;
                 var tmpName = item.Name;
-                while(items.Any(i => i.Name == item.Name))
+                while (items.Any(i => i.Name == item.Name))
                 {
                     item.Name = tmpName + unique;
                     unique++;
                 }
-                                
+
                 items.Add(item);
             }
-                                   
+
             var fileTxt = FormatOutputText(items);
-            File.WriteAllText(Path.Combine(basePath, outputFileName), fileTxt);
+            //File.WriteAllText(Path.Combine(basePath, outputFileName), fileTxt);
+            File.WriteAllText(outputFile, fileTxt);
         }
-                
+
         static string FormatOutputText(List<Item> itemList)
         {
             var n = Environment.NewLine;
-            
+
             var sb = new StringBuilder();
             sb.AppendLine("namespace Stardew.ItemLibary");
             sb.AppendLine("{");
@@ -117,7 +147,7 @@ namespace ItemFormatter
         public string DisplayName { get; set; }
         public string Description { get; set; }
     }
-    
+
     public static class Extensions
     {
         public static string ReplaceInvalidChars(this string itemTxt)
