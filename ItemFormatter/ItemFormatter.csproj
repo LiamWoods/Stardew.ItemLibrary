@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Formatter.cs" />
-    <Compile Include="Classes\Item.cs" />
     <Compile Include="Classes\JSON\Reader.cs" />
     <Compile Include="Classes\JSON\Header.cs" />
     <Compile Include="Classes\JSON\ObjectInformation.cs" />
@@ -60,6 +59,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ItemLibrary\ItemLibrary.csproj">
+      <Project>{4d1182a1-ae28-468a-857a-ff611348d42a}</Project>
+      <Name>ItemLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -25,25 +25,17 @@ namespace ItemFormatter
 
             var unpackedDir = Path.Combine(_xnbCliPath, "unpacked");
             var objInfo = ObjectInformation.LoadFromFile(Path.Combine(unpackedDir, _inputFileName));
-
-            var trimChars = new char[] { ' ', '"' };
-
-            var items = new List<Item>();
+                        
+            var items = new List<ItemInfo>();
             foreach (var content in objInfo.Content)
             {
-                var item = new Item(content.Key, content.Value);
+                var item = new ItemInfo(content.Key, content.Value);
                 if (item.IsInvalid())
                 {
                     continue;
                 }
 
-                int unique = 2;
-                var tmpName = item.Name;
-                while (items.Any(i => i.Name == item.Name))
-                {
-                    item.Name = tmpName + unique;
-                    unique++;
-                }
+                item.UniquifyName(items);
 
                 items.Add(item);
             }

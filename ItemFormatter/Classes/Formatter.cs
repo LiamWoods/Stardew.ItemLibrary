@@ -5,7 +5,7 @@ namespace ItemFormatter.Classes
 {
     class Formatter
     {
-        public static string FormatOutputText(List<Item> itemList)
+        public static string FormatOutputText(List<ItemInfo> itemList)
         {
             var sb = new StringBuilder();
             sb.AppendLine("namespace Stardew.ItemLibary");
