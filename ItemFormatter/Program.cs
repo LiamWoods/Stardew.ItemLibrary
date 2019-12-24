@@ -10,7 +10,7 @@ namespace ItemFormatter
     class Program
     {
         const string _steamObjectInfoPath = @"C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\Content\Data";
-        const string _xnbCliPath = @"C:\Users\Liam\Desktop\xnbcli-windows\xnbcli";
+        const string _xnbCliPath = @"C:\Workspace\xnbcli-windows";
         const string _inputFileName = "ObjectInformation.json";
         const string _outputFilePath = @"ItemLibrary\Items.cs";
         const string _assemblyName = "Stardew.ItemLibrary";

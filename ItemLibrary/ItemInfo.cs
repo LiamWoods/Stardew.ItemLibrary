@@ -23,7 +23,7 @@ namespace ItemFormatter.Classes
 
             if (IsInvalid(Name, id))
             {
-                throw new ArgumentException($"Item {id} ({Name}) is not a valid item");
+                return;
             }
 
             Price = int.Parse(dataArr[1]);

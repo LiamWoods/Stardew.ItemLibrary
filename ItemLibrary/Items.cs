@@ -14,6 +14,7 @@ namespace Stardew.ItemLibary
 		public const int Amethyst = 66;
 		public const int Topaz = 68;
 		public const int Jade = 70;
+		public const int TrimmedLuckyPurpleShorts = 71;
 		public const int Diamond = 72;
 		public const int PrismaticShard = 74;
 		public const int CaveCarrot = 78;
@@ -110,6 +111,7 @@ namespace Stardew.ItemLibary
 		public const int LargeMilk = 186;
 		public const int GreenBean = 188;
 		public const int Cauliflower = 190;
+		public const int OrnateNecklace = 191;
 		public const int Potato = 192;
 		public const int FriedEgg = 194;
 		public const int Omelet = 195;
@@ -166,22 +168,33 @@ namespace Stardew.ItemLibary
 		public const int Oil = 247;
 		public const int Garlic = 248;
 		public const int Kale = 250;
+		public const int TeaSapling = 251;
 		public const int Rhubarb = 252;
+		public const int TripleShotEspresso = 253;
 		public const int Melon = 254;
 		public const int Tomato = 256;
 		public const int Morel = 257;
 		public const int Blueberry = 258;
 		public const int FiddleheadFern = 259;
 		public const int HotPepper = 260;
+		public const int WarpTotemDesert = 261;
 		public const int Wheat = 262;
 		public const int Radish = 264;
+		public const int SeafoamPudding = 265;
 		public const int RedCabbage = 266;
+		public const int Flounder = 267;
 		public const int Starfruit = 268;
+		public const int MidnightCarp = 269;
 		public const int Corn = 270;
+		public const int UnmilledRice = 271;
 		public const int Eggplant = 272;
+		public const int RiceShoot = 273;
 		public const int Artichoke = 274;
+		public const int ArtifactTrove = 275;
 		public const int Pumpkin = 276;
+		public const int WiltedBouquet = 277;
 		public const int BokChoy = 278;
+		public const int MagicRockCandy = 279;
 		public const int Yam = 280;
 		public const int Chanterelle = 281;
 		public const int Cranberries = 282;
@@ -190,6 +203,7 @@ namespace Stardew.ItemLibary
 		public const int CherryBomb = 286;
 		public const int Bomb = 287;
 		public const int MegaBomb = 288;
+		public const int BrickFloor = 293;
 		public const int Twig = 294;
 		public const int Twig2 = 295;
 		public const int Salmonberry = 296;
@@ -299,7 +313,9 @@ namespace Stardew.ItemLibary
 		public const int ExplosiveAmmo = 441;
 		public const int DuckEgg = 442;
 		public const int DuckFeather = 444;
+		public const int Caviar = 445;
 		public const int RabbitsFoot = 446;
+		public const int AgedRoe = 447;
 		public const int StoneBase = 449;
 		public const int PoppySeeds = 453;
 		public const int AncientFruit = 454;
@@ -432,6 +448,7 @@ namespace Stardew.ItemLibary
 		public const int BlackberryCobbler = 611;
 		public const int CranberryCandy = 612;
 		public const int Apple = 613;
+		public const int GreenTea = 614;
 		public const int Bruschetta = 618;
 		public const int QualitySprinkler = 621;
 		public const int CherrySapling = 628;
@@ -495,6 +512,7 @@ namespace Stardew.ItemLibary
 		public const int LobsterBisque = 730;
 		public const int MapleBar = 731;
 		public const int CrabCakes = 732;
+		public const int ShrimpCocktail = 733;
 		public const int Woodskip = 734;
 		public const int StrawberrySeeds = 745;
 		public const int JackOLantern = 746;
@@ -524,5 +542,14 @@ namespace Stardew.ItemLibary
 		public const int WeddingRing = 801;
 		public const int CactusSeeds = 802;
 		public const int IridiumMilk = 803;
+		public const int TreeFertilizer = 805;
+		public const int DinosaurMayonnaise = 807;
+		public const int VoidGhostPendant = 808;
+		public const int MovieTicket = 809;
+		public const int CrabshellRing = 810;
+		public const int NapalmRing = 811;
+		public const int Roe = 812;
+		public const int SquidInk = 814;
+		public const int TeaLeaves = 815;
 	}
 }
