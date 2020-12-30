@@ -6,6 +6,8 @@ namespace ItemFormatter.Classes
 {
     public class ItemInfo
     {
+        private static readonly char[] InvalidCharacters = { '\'', ' ', ':', '.', '-', '(', ')' };
+
         public int Id { get; private set; }
         public string Name { get; private set; }
         public int Price { get; private set; }
@@ -20,6 +22,11 @@ namespace ItemFormatter.Classes
 
             var dataArr = data.Split('/');
             Name = ReplaceInvalidChars(dataArr[0]);
+
+            if (Name == "???")
+            {
+                Name = "Secret";
+            }
 
             if (IsInvalid(Name, id))
             {
@@ -45,7 +52,7 @@ namespace ItemFormatter.Classes
 
         }
 
-        private static bool IsInvalid(string name, int id)
+        private bool IsInvalid(string name, int id)
         {
             return (name == "Weeds" && id != 316) || (name == "Stone" && id != 390);
         }
@@ -59,7 +66,9 @@ namespace ItemFormatter.Classes
                 .Replace(" ", "")
                 .Replace(":", "")
                 .Replace(".", "")
-                .Replace("-", "");
+                .Replace("-", "")
+                .Replace("(", "")
+                .Replace(")", "");
         }
     }
 }
